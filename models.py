@@ -23,4 +23,4 @@ class Team:
                 self.points += 1  # Очко за поражение в ОТ/Б
 
     def __str__(self):
-        return f"{self.name} (Ат: {self.attack}, Защ: {self.defense}, Очки: {self.points})"
+        return f"{self.name} (Ат: {self.attack}, Защ: {self.defense},git log --oneline Очки: {self.points})"
