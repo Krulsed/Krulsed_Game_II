@@ -43,7 +43,7 @@ class Conferece:
 
         sorted_teams = sorted(self.teams)
 
-        class Team:
+        class Team_stats:
             def __init__(self, name, wins, otl, losses):
                 self.name = name
                 self.wins = wins
