@@ -10,11 +10,16 @@ class Team:
         self.points = 0  # Очки
         self.goals_for = 0  # Забитые шайбы
         self.goals_against = 0  # Пропущенные шайбы
+        self.matches_played = 0  # Сыгранные матчи (добавлено!)
 
     def results_of_game(self, goals_scored: int, goals_conceded: int, win: bool, ended_in_ot: bool):
-        """Обновление статистики после матча с учетом правил КХЛ"""
+        """
+        Обновление статистики после матча с учетом правил КХЛ
+        """
+
         self.goals_for += goals_scored
         self.goals_against += goals_conceded
+        self.matches_played += 1  # Увеличиваем счетчик сыгранных матчей на 1
 
         if win:
             self.points += 2  # Победа в основное или ОТ/Б
@@ -23,41 +28,13 @@ class Team:
                 self.points += 1  # Очко за поражение в ОТ/Б
 
     def __str__(self):
-        return f"{self.name} (Ат: {self.attack}, Защ: {self.defense},git log --oneline Очки: {self.points})"
+        return f"{self.name} (Нап: {self.attack}, Защ: {self.defense}, Очки: {self.points})"
 
 
-
-
-
-
-
-class Conferece:
-    def __init__ (self,name: str):
+class Conference:  #
+    def __init__(self, name: str):
         self.name = name
         self.teams = []
 
-    def add_team(self,team):
+    def add_team(self, team):
         self.teams.append(team)
-
-    def show_results(self):
-
-        sorted_teams = sorted(self.teams)
-
-        class Team_stats:
-            def __init__(self, name, wins, otl, losses):
-                self.name = name
-                self.wins = wins
-                self.otl = otl
-                self.losses = losses
-
-            def points(self):
-                return self.wins * 2 + self.otl * 1
-
-        class Match:
-            def __init__(self, date, home_team, away_teem):
-                self.date = date
-                self.home_team = home_team
-                self.away_teem = away_teem
-                self.home_team_score = None
-                self.away_team_score = None
-                self.status = "scheduled"
